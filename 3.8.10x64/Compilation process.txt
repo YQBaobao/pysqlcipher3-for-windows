@@ -1,0 +1,754 @@
+**********************************************************************
+** Visual Studio 2017 Developer Command Prompt v15.9.60
+** Copyright (c) 2017 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community>cd /d F:\Projects\sqlcipher
+
+F:\Projects\sqlcipher>nmake /f Makefile.msc clean
+
+Microsoft (R) 程序维护实用工具 14.16.27051.0 版
+版权所有 (C) Microsoft Corporation。  保留所有权利。
+
+        del /Q *.exp *.lo *.ilk *.lib *.obj *.ncb *.pdb *.sdf *.suo 2>NUL
+        del /Q *.bsc *.def *.cod *.da *.bb *.bbg *.vc gmon.out 2>NUL
+        del /Q sqlite3.exe sqlite3.dll Replace.exe 2>NUL
+        del /Q tclsqlite3.dll pkgIndex.tcl 2>NUL
+        del /Q opcodes.c opcodes.h 2>NUL
+        del /Q lemon.* lempar.c parse.* 2>NUL
+        del /Q mksourceid.* mkkeywordhash.* keywordhash.h 2>NUL
+        del /Q notasharedlib.* 2>NUL
+        rmdir /Q/S .deps 2>NUL
+        rmdir /Q/S .libs 2>NUL
+        rmdir /Q/S tsrc 2>NUL
+        del /Q .target_source 2>NUL
+        del /Q tclsqlite3.exe sqlite_tcl.h sqlite_tclDecls.h 2>NUL
+        del /Q lsm.dll lsmtest.exe 2>NUL
+        del /Q atrc.exe changesetfuzz.exe dbtotxt.exe index_usage.exe 2>NUL
+        del /Q testloadext.dll 2>NUL
+        del /Q testfixture.exe test.db 2>NUL
+        del /Q LogEst.exe fts3view.exe rollback-test.exe showdb.exe dbdump.exe 2>NUL
+        del /Q changeset.exe 2>NUL
+        del /Q showjournal.exe showstat4.exe showwal.exe speedtest1.exe 2>NUL
+        del /Q mptester.exe wordcount.exe rbu.exe srcck1.exe 2>NUL
+        del /Q sqlite3.c sqlite3-*.c sqlite3.h 2>NUL
+        del /Q sqlite3rc.h 2>NUL
+        del /Q shell.c sqlite3ext.h sqlite3session.h 2>NUL
+        del /Q sqlite3_analyzer.exe sqlite3_analyzer.c 2>NUL
+        del /Q sqlite-*-output.vsix 2>NUL
+        del /Q fuzzershell.exe fuzzcheck.exe sqldiff.exe dbhash.exe 2>NUL
+        del /Q sqltclsh.* 2>NUL
+        del /Q dbfuzz.exe sessionfuzz.exe threadtest3.exe 2>NUL
+        del /Q kvtest.exe ossshell.exe scrub.exe 2>NUL
+        del /Q showshm.exe sqlite3_checker.* sqlite3_expert.exe 2>NUL
+        del /Q fts5.* fts5parse.* 2>NUL
+        del /Q lsm.h lsm1.c 2>NUL
+        del /q src-verify.exe 2>NUL
+
+F:\Projects\sqlcipher>nmake /f Makefile.msc
+
+Microsoft (R) 程序维护实用工具 14.16.27051.0 版
+版权所有 (C) Microsoft Corporation。  保留所有权利。
+
+        copy /Y .\tool\lempar.c .
+已复制         1 个文件。
+        copy /B lempar.c +,,
+已复制         1 个文件。
+        cl -nologo -W4 -Fdlemon.pdb   -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -O2 -Zi -wd4054 -wd4055 -wd4100 -wd4127 -wd4130 -wd4152 -wd4189 -wd4206 -wd4210 -wd4232 -wd4244 -wd4305 -wd4306 -wd4702 -wd4706 -Daccess=_access  -Felemon.exe .\tool\lemon.c /link /DEBUG
+lemon.c
+        del /Q parse.y parse.h parse.h.temp 2>NUL
+        copy /Y .\src\parse.y .
+已复制         1 个文件。
+        copy /B parse.y +,,
+已复制         1 个文件。
+        .\lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -S parse.y
+        type parse.h .\src\vdbe.c | tclsh .\tool\mkopcodeh.tcl > opcodes.h
+
+parse.h
+
+
+
+.\src\vdbe.c
+
+
+        tclsh .\tool\mkopcodec.tcl opcodes.h > opcodes.c
+        cl -nologo -W4 -Fdmkkeywordhash.pdb   -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -O2 -Zi -wd4054 -wd4055 -wd4100 -wd4127 -wd4130 -wd4152 -wd4189 -wd4206 -wd4210 -wd4232 -wd4244 -wd4305 -wd4306 -wd4702 -wd4706 -Femkkeywordhash.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS    .\tool\mkkeywordhash.c /link /DEBUG
+mkkeywordhash.c
+        .\mkkeywordhash.exe > keywordhash.h
+        tclsh .\tool\mkshellc.tcl > shell.c
+        cl -nologo -W4 -Fdmksourceid.pdb   -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -O2 -Zi -wd4054 -wd4055 -wd4100 -wd4127 -wd4130 -wd4152 -wd4189 -wd4206 -wd4210 -wd4232 -wd4244 -wd4305 -wd4306 -wd4702 -wd4706 -Femksourceid.exe .\tool\mksourceid.c /link /DEBUG
+mksourceid.c
+        tclsh .\tool\mksqlite3h.tcl . > sqlite3.h
+        copy /Y .\ext\fts5\fts5parse.y .
+已复制         1 个文件。
+        copy /B fts5parse.y +,,
+已复制         1 个文件。
+        del /Q fts5parse.h 2>NUL
+        .\lemon.exe  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -S fts5parse.y
+        tclsh .\ext\fts5\tool\mkfts5c.tcl
+        copy /Y .\ext\fts5\fts5.h .
+已复制         1 个文件。
+        copy /B fts5.h +,,
+已复制         1 个文件。
+        rmdir /Q/S tsrc 2>NUL
+        mkdir tsrc
+        for %i in (.\src\crypto.c  .\src\crypto_cc.c  .\src\crypto_impl.c  .\src\crypto_libtomcrypt.c  .\src\crypto_nss.c  .\src\crypto_openssl.c  .\src\crypto.h  .\src\sqlcipher.h  .\src\alter.c  .\src\analyze.c  .\src\attach.c  .\src\auth.c  .\src\backup.c  .\src\bitvec.c  .\src\btmutex.c  .\src\btree.c  .\src\build.c  .\src\callback.c  .\src\complete.c  .\src\ctime.c  .\src\date.c  .\src\dbpage.c  .\src\dbstat.c  .\src\delete.c  .\src\expr.c  .\src\fault.c  .\src\fkey.c  .\src\func.c  .\src\global.c  .\src\hash.c  .\src\insert.c  .\src\json.c  .\src\legacy.c  .\src\loadext.c  .\src\main.c  .\src\malloc.c  .\src\mem0.c  .\src\mem1.c  .\src\mem2.c  .\src\mem3.c  .\src\mem5.c  .\src\memdb.c  .\src\memjournal.c  .\src\mutex.c  .\src\mutex_noop.c  .\src\mutex_unix.c  .\src\mutex_w32.c  .\src\notify.c  .\src\os.c  .\src\os_kv.c  .\src\os_unix.c  .\src\os_win.c) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto_cc.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto_impl.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto_libtomcrypt.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto_nss.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto_openssl.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\crypto.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\sqlcipher.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\alter.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\analyze.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\attach.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\auth.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\backup.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\bitvec.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\btmutex.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\btree.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\build.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\callback.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\complete.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\ctime.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\date.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\dbpage.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\dbstat.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\delete.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\expr.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\fault.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\fkey.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\func.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\global.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\hash.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\insert.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\json.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\legacy.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\loadext.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\main.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\malloc.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mem0.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mem1.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mem2.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mem3.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mem5.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\memdb.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\memjournal.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mutex.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mutex_noop.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mutex_unix.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mutex_w32.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\notify.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os_kv.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os_unix.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os_win.c tsrc
+已复制         1 个文件。
+        for %i in (.\src\pager.c  .\src\pcache.c  .\src\pcache1.c  .\src\pragma.c  .\src\prepare.c  .\src\printf.c  .\src\random.c  .\src\resolve.c  .\src\rowset.c  .\src\select.c  .\src\status.c  .\src\table.c  .\src\threads.c  .\src\tclsqlite.c  .\src\tokenize.c  .\src\treeview.c  .\src\trigger.c  .\src\utf.c  .\src\update.c  .\src\upsert.c  .\src\util.c  .\src\vacuum.c  .\src\vdbe.c  .\src\vdbeapi.c  .\src\vdbeaux.c  .\src\vdbeblob.c  .\src\vdbemem.c  .\src\vdbesort.c  .\src\vdbetrace.c  .\src\vdbevtab.c  .\src\vtab.c  .\src\wal.c  .\src\walker.c  .\src\where.c  .\src\wherecode.c  .\src\whereexpr.c  .\src\window.c) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\src\pager.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\pcache.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\pcache1.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\pragma.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\prepare.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\printf.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\random.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\resolve.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\rowset.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\select.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\status.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\table.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\threads.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\tclsqlite.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\tokenize.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\treeview.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\trigger.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\utf.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\update.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\upsert.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\util.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vacuum.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbe.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbeapi.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbeaux.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbeblob.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbemem.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbesort.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbetrace.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbevtab.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vtab.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\wal.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\walker.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\where.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\wherecode.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\whereexpr.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\window.c tsrc
+已复制         1 个文件。
+        for %i in (.\src\parse.y) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\src\parse.y tsrc
+已复制         1 个文件。
+        for %i in (.\src\btree.h  .\src\btreeInt.h  .\src\hash.h  .\src\hwtime.h  .\src\msvc.h  .\src\mutex.h  .\src\os.h  .\src\os_common.h  .\src\os_setup.h  .\src\os_win.h) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\src\btree.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\btreeInt.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\hash.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\hwtime.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\msvc.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\mutex.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os_common.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os_setup.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\os_win.h tsrc
+已复制         1 个文件。
+        for %i in (.\src\pager.h  .\src\pcache.h  .\src\pragma.h  .\src\sqlite.h.in  .\src\sqlite3ext.h  .\src\sqliteInt.h  .\src\sqliteLimit.h  .\src\vdbe.h  .\src\vdbeInt.h  .\src\vxworks.h  .\src\wal.h  .\src\whereInt.h) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\src\pager.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\pcache.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\pragma.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\sqlite.h.in tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\sqlite3ext.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\sqliteInt.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\sqliteLimit.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbe.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vdbeInt.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\vxworks.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\wal.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\src\whereInt.h tsrc
+已复制         1 个文件。
+        for %i in (.\ext\fts3\fts3.c  .\ext\fts3\fts3_aux.c  .\ext\fts3\fts3_expr.c  .\ext\fts3\fts3_hash.c  .\ext\fts3\fts3_icu.c  .\ext\fts3\fts3_porter.c  .\ext\fts3\fts3_snippet.c  .\ext\fts3\fts3_tokenizer.c  .\ext\fts3\fts3_tokenizer1.c  .\ext\fts3\fts3_tokenize_vtab.c  .\ext\fts3\fts3_unicode.c  .\ext\fts3\fts3_unicode2.c  .\ext\fts3\fts3_write.c  .\ext\icu\icu.c  .\ext\rtree\rtree.c  .\ext\session\sqlite3session.c  .\ext\rbu\sqlite3rbu.c  .\ext\misc\stmt.c) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_aux.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_expr.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_hash.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_icu.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_porter.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_snippet.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_tokenizer.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_tokenizer1.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_tokenize_vtab.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_unicode.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_unicode2.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_write.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\icu\icu.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\rtree\rtree.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\session\sqlite3session.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\rbu\sqlite3rbu.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\misc\stmt.c tsrc
+已复制         1 个文件。
+        for %i in (.\ext\fts3\fts3.h  .\ext\fts3\fts3Int.h  .\ext\fts3\fts3_hash.h  .\ext\fts3\fts3_tokenizer.h  .\ext\icu\sqliteicu.h  .\ext\rtree\rtree.h  .\ext\rtree\geopoly.c  .\ext\rbu\sqlite3rbu.h  .\ext\session\sqlite3session.h) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3Int.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_hash.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\fts3\fts3_tokenizer.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\icu\sqliteicu.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\rtree\rtree.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\rtree\geopoly.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\rbu\sqlite3rbu.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y .\ext\session\sqlite3session.h tsrc
+已复制         1 个文件。
+        for %i in (opcodes.c  parse.c) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y opcodes.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y parse.c tsrc
+已复制         1 个文件。
+        for %i in (keywordhash.h  opcodes.h  parse.h  shell.c  sqlite3.h) do copy /Y %i tsrc
+
+F:\Projects\sqlcipher>copy /Y keywordhash.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y opcodes.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y parse.h tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y shell.c tsrc
+已复制         1 个文件。
+
+F:\Projects\sqlcipher>copy /Y sqlite3.h tsrc
+已复制         1 个文件。
+        for %i in () do copy /Y %i tsrc
+        copy /Y fts5.c tsrc
+已复制         1 个文件。
+        copy /B tsrc\fts5.c +,,
+已复制         1 个文件。
+        copy /Y fts5.h tsrc
+已复制         1 个文件。
+        copy /B tsrc\fts5.h +,,
+已复制         1 个文件。
+        del /Q tsrc\sqlite.h.in tsrc\parse.y 2>NUL
+        tclsh .\tool\vdbe-compress.tcl  < tsrc\vdbe.c > vdbe.new
+        move vdbe.new tsrc\vdbe.c
+移动了         1 个文件。
+        echo > .target_source
+        copy /Y tsrc\sqlite3ext.h sqlite3ext.h
+已复制         1 个文件。
+        copy /B sqlite3ext.h +,,
+已复制         1 个文件。
+        copy /Y .\ext\session\sqlite3session.h .
+已复制         1 个文件。
+        copy /B sqlite3session.h +,,
+已复制         1 个文件。
+        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC -I"D:\Program Files\OpenSSL-Win64\include"  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fesrc-verify.exe -wd4054 -wd4055 -wd4100 -wd4127 -wd4130 -wd4152 -wd4189 -wd4206 -wd4210 -wd4232 -wd4244 -wd4305 -wd4306 -wd4702 -wd4706 .\tool\src-verify.c
+src-verify.c
+        tclsh .\tool\mksqlite3c.tcl --linemacros=0
+        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC -I"D:\Program Files\OpenSSL-Win64\include"  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fosqlite3.lo -Fdsqlite3.pdb  -c sqlite3.c
+sqlite3.c
+        echo #ifndef SQLITE_RESOURCE_VERSION > sqlite3rc.h
+        for /F %V in ('type ".\VERSION"') do (  echo #define SQLITE_RESOURCE_VERSION %V  | tclsh .\tool\replace.tcl exact . ^, >> sqlite3rc.h  )
+
+F:\Projects\sqlcipher>(echo #define SQLITE_RESOURCE_VERSION 3.44.2   | tclsh .\tool\replace.tcl exact . ,   1>>sqlite3rc.h )
+        echo #endif >> sqlite3rc.h
+        rc -DSQLITE_OS_WIN=1 -I. -I. -I.\src   -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=1  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -r -fo sqlite3res.lo .\src\sqlite3.rc
+Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+        lib.exe /NOLOGO /MACHINE:x64 /OUT:libsqlite3.lib sqlite3.lo
+        echo EXPORTS > sqlite3.def
+        dumpbin /all libsqlite3.lib  | tclsh .\tool\replace.tcl include "^\s+1 _?(sqlite3(?:session|changeset|changegroup|rebaser|rbu)?_[^@]*)(?:@\d+)?$" \1  | sort >> sqlite3.def
+        link.exe /DEBUG   /NOLOGO /MACHINE:x64  /LIBPATH:"D:\Program Files\OpenSSL-Win64\lib\VC\static" /DLL /DEF:sqlite3.def /OUT:sqlite3.dll sqlite3.lo sqlite3res.lo  libcrypto64MT.lib libssl64MT.lib ws2_32.lib shell32.lib advapi32.lib gdi32.lib user32.lib crypt32.lib
+  正在创建库 sqlite3.lib 和对象 sqlite3.exp
+        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC -I"D:\Program Files\OpenSSL-Win64\include"  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fesqlite3.exe  -DSQLITE_DQS=0 -DSQLITE_ENABLE_FTS4=1 -DSQLITE_ENABLE_EXPLAIN_COMMENTS=1 -DSQLITE_ENABLE_OFFSET_SQL_FUNC=1 -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION=1 -DSQLITE_ENABLE_STMT_SCANSTATUS=1 -DHAVE_READLINE=0 shell.c sqlite3.c  /link /pdb:sqlite3sh.pdb /DEBUG   /NOLOGO /MACHINE:x64   /LIBPATH:"D:\Program Files\OpenSSL-Win64\lib\VC\static" sqlite3res.lo   libcrypto64MT.lib libssl64MT.lib ws2_32.lib shell32.lib advapi32.lib gdi32.lib user32.lib crypt32.lib
+shell.c
+shell.c: warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+shell.c(610): warning C4204: 使用了非标准扩展: 非常量聚合初始值设定项
+shell.c(732): warning C4204: 使用了非标准扩展: 非常量聚合初始值设定项
+shell.c(26296): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+shell.c(26328): error C2001: 常量中有换行符
+shell.c(26329): error C2143: 语法错误: 缺少“;”(在“const”的前面)
+shell.c(26343): error C2065: “zBom”: 未声明的标识符
+shell.c(26343): warning C4047: “=”:“int”与“const char *”的间接级别不同
+shell.c(26410): error C2065: “zBom”: 未声明的标识符
+shell.c(26410): warning C4047: “函数”:“const char *”与“int”的间接级别不同
+shell.c(26410): warning C4024: “oPutsUtf8”: 形参和实参 1 的类型不同
+shell.c(26423): error C2065: “zBom”: 未声明的标识符
+shell.c(26423): warning C4047: “函数”:“const char *”与“int”的间接级别不同
+shell.c(26423): warning C4024: “oPutsUtf8”: 形参和实参 1 的类型不同
+sqlite3.c
+正在生成代码...
+NMAKE : fatal error U1077: “"D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64\cl.EXE"”: 返回代码“0x2”
+Stop.
+
+F:\Projects\sqlcipher>cd F:\Projects\pysqlcipher3
+
+F:\Projects\pysqlcipher3>python setup.py clean
+running clean
+
+F:\Projects\pysqlcipher3>python enter code here
+python: can't open file 'enter': [Errno 2] No such file or directory
+
+F:\Projects\pysqlcipher3>
+F:\Projects\pysqlcipher3>setup.py build_amalgamation
+
+F:\Projects\pysqlcipher3>python setup.py build_amalgamation
+running build_amalgamation
+Builds a C extension using a sqlcipher amalgamation
+building 'pysqlcipher3._sqlite3' extension
+creating build
+creating build\temp.win-amd64-3.8
+creating build\temp.win-amd64-3.8\Release
+creating build\temp.win-amd64-3.8\Release\src
+creating build\temp.win-amd64-3.8\Release\src\python3
+creating build\temp.win-amd64-3.8\Release\amalgamation
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\module.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\module.obj
+module.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\connection.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\connection.obj
+connection.c
+src\python3\connection.c(527): warning C4996: 'PyObject_AsCharBuffer': deprecated in 3.0
+d:\program files\python38\include\abstract.h(320): note: 参见“PyObject_AsCharBuffer”的声明
+src\python3\connection.c(1546): warning C4090: “=”: 不同的“const”限定符
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\cursor.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\cursor.obj
+cursor.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\cache.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\cache.obj
+cache.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\microprotocols.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\microprotocols.obj
+microprotocols.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\prepare_protocol.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\prepare_protocol.obj
+prepare_protocol.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\statement.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\statement.objstatement.c
+src\python3\statement.c(138): warning C4090: “=”: 不同的“const”限定符
+src\python3\statement.c(158): warning C4244: “函数”: 从“Py_ssize_t”转换到“int”，可能丢失数据
+src\python3\statement.c(149): warning C4996: 'PyObject_AsCharBuffer': deprecated in 3.0
+d:\program files\python38\include\abstract.h(320): note: 参见“PyObject_AsCharBuffer”的声明
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\util.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\util.obj
+util.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\row.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\row.obj
+row.c
+src\python3\row.c(101): warning C4090: “=”: 不同的“const”限定符
+src\python3\row.c(111): warning C4090: “=”: 不同的“const”限定符
+src\python3\row.c(168): warning C4244: “=”: 从“Py_ssize_t”转换到“int”，可能丢失数据
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcamalgamation\sqlite3.c /Fobuild\temp.win-amd64-3.8\Release\amalgamation\sqlite3.obj
+sqlite3.c
+creating F:\Projects\pysqlcipher3\build\lib.win-amd64-3.8
+creating F:\Projects\pysqlcipher3\build\lib.win-amd64-3.8\pysqlcipher3
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO "/LIBPATH:D:\Program Files\Python38\libs" "/LIBPATH:D:\Program Files\Python38\PCbuild\amd64" "/LIBPATH:D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\lib\x64" "/LIBPATH:D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x64" "/LIBPATH:D:\Windows Kits\10\lib\10.0.22621.0\ucrt\x64" "/LIBPATH:D:\Windows Kits\10\\lib\10.0.22621.0\\um\x64" "/LIBPATH:D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\lib\x64" "/LIBPATH:D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x64" "/LIBPATH:D:\Windows Kits\10\lib\10.0.22621.0\ucrt\x64" "/LIBPATH:D:\Windows Kits\10\lib\10.0.22621.0\um\x64" /EXPORT:PyInit__sqlite3 build\temp.win-amd64-3.8\Release\src\python3\module.obj build\temp.win-amd64-3.8\Release\src\python3\connection.obj build\temp.win-amd64-3.8\Release\src\python3\cursor.obj build\temp.win-amd64-3.8\Release\src\python3\cache.obj build\temp.win-amd64-3.8\Release\src\python3\microprotocols.obj build\temp.win-amd64-3.8\Release\src\python3\prepare_protocol.obj build\temp.win-amd64-3.8\Release\src\python3\statement.obj build\temp.win-amd64-3.8\Release\src\python3\util.obj build\temp.win-amd64-3.8\Release\src\python3\row.obj build\temp.win-amd64-3.8\Release\amalgamation\sqlite3.obj /OUT:build\lib.win-amd64-3.8\pysqlcipher3\_sqlite3.cp38-win_amd64.pyd /IMPLIB:build\temp.win-amd64-3.8\Release\src\python3\_sqlite3.cp38-win_amd64.lib libeay32.lib "/LIBPATH:D:\Program Files\OpenSSL-Win64\lib"
+  正在创建库 build\temp.win-amd64-3.8\Release\src\python3\_sqlite3.cp38-win_amd64.lib 和对象 build\temp.win-amd64-3.8\Release\src\python3\_sqlite3.cp38-win_amd64.exp
+正在生成代码
+已完成代码的生成
+
+F:\Projects\pysqlcipher3>python setup.py install
+running install
+running bdist_egg
+running egg_info
+creating pysqlcipher3.egg-info
+writing pysqlcipher3.egg-info\PKG-INFO
+writing dependency_links to pysqlcipher3.egg-info\dependency_links.txt
+writing top-level names to pysqlcipher3.egg-info\top_level.txt
+writing manifest file 'pysqlcipher3.egg-info\SOURCES.txt'
+adding license file 'LICENSE' (matched pattern 'LICEN[CS]E*')
+reading manifest file 'pysqlcipher3.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*~' found anywhere in distribution
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'pysqlcipher3.egg-info\SOURCES.txt'
+installing library code to build\bdist.win-amd64\egg
+running install_lib
+running build_py
+copying lib\dbapi2.py -> build\lib.win-amd64-3.8\pysqlcipher3
+copying lib\dump.py -> build\lib.win-amd64-3.8\pysqlcipher3
+copying lib\__init__.py -> build\lib.win-amd64-3.8\pysqlcipher3
+creating build\lib.win-amd64-3.8\pysqlcipher3\test
+copying lib\test\__init__.py -> build\lib.win-amd64-3.8\pysqlcipher3\test
+creating build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\dbapi.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\dump.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\factory.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\hooks.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\regression.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\sqlcipher.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\transactions.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\types.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\userfunctions.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+copying lib\test\python3\__init__.py -> build\lib.win-amd64-3.8\pysqlcipher3\test\python3
+running build_ext
+Builds a C extension linking against libsqlcipher library
+creating build\bdist.win-amd64
+creating build\bdist.win-amd64\egg
+creating build\bdist.win-amd64\egg\pysqlcipher3
+copying build\lib.win-amd64-3.8\pysqlcipher3\dbapi2.py -> build\bdist.win-amd64\egg\pysqlcipher3
+copying build\lib.win-amd64-3.8\pysqlcipher3\dump.py -> build\bdist.win-amd64\egg\pysqlcipher3
+creating build\bdist.win-amd64\egg\pysqlcipher3\test
+creating build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\dbapi.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\dump.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\factory.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\hooks.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\regression.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\sqlcipher.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\transactions.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\types.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\userfunctions.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\python3\__init__.py -> build\bdist.win-amd64\egg\pysqlcipher3\test\python3
+copying build\lib.win-amd64-3.8\pysqlcipher3\test\__init__.py -> build\bdist.win-amd64\egg\pysqlcipher3\test
+copying build\lib.win-amd64-3.8\pysqlcipher3\_sqlite3.cp38-win_amd64.pyd -> build\bdist.win-amd64\egg\pysqlcipher3
+copying build\lib.win-amd64-3.8\pysqlcipher3\__init__.py -> build\bdist.win-amd64\egg\pysqlcipher3
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\dbapi2.py to dbapi2.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\dump.py to dump.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\dbapi.py to dbapi.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\dump.py to dump.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\factory.py to factory.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\hooks.py to hooks.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\regression.py to regression.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\sqlcipher.py to sqlcipher.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\transactions.py to transactions.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\types.py to types.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\userfunctions.py to userfunctions.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\python3\__init__.py to __init__.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\test\__init__.py to __init__.cpython-38.pyc
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\__init__.py to __init__.cpython-38.pyc
+creating stub loader for pysqlcipher3\_sqlite3.cp38-win_amd64.pyd
+byte-compiling build\bdist.win-amd64\egg\pysqlcipher3\_sqlite3.py to _sqlite3.cpython-38.pyc
+creating build\bdist.win-amd64\egg\EGG-INFO
+copying pysqlcipher3.egg-info\PKG-INFO -> build\bdist.win-amd64\egg\EGG-INFO
+copying pysqlcipher3.egg-info\SOURCES.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying pysqlcipher3.egg-info\dependency_links.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying pysqlcipher3.egg-info\top_level.txt -> build\bdist.win-amd64\egg\EGG-INFO
+writing build\bdist.win-amd64\egg\EGG-INFO\native_libs.txt
+zip_safe flag not set; analyzing archive contents...
+pysqlcipher3.__pycache__._sqlite3.cpython-38: module references __file__
+creating dist
+creating 'dist\pysqlcipher3-1.2.1-py3.8-win-amd64.egg' and adding 'build\bdist.win-amd64\egg' to it
+removing 'build\bdist.win-amd64\egg' (and everything under it)
+Processing pysqlcipher3-1.2.1-py3.8-win-amd64.egg
+creating d:\program files\python38\lib\site-packages\pysqlcipher3-1.2.1-py3.8-win-amd64.egg
+Extracting pysqlcipher3-1.2.1-py3.8-win-amd64.egg to d:\program files\python38\lib\site-packages
+Adding pysqlcipher3 1.2.1 to easy-install.pth file
+
+Installed d:\program files\python38\lib\site-packages\pysqlcipher3-1.2.1-py3.8-win-amd64.egg
+Processing dependencies for pysqlcipher3==1.2.1
+Finished processing dependencies for pysqlcipher3==1.2.1
+
+F:\Projects\pysqlcipher3>
