@@ -46,7 +46,7 @@ Microsoft (R) 程序维护实用工具 14.16.27051.0 版
         del /Q lsm.h lsm1.c 2>NUL
         del /q src-verify.exe 2>NUL
 
-F:\Projects\sqlcipher>nmake /f Makefile.msc
+F:\Projects\sqlcipher>nmake /f Makefile.msc sqlite3.c
 
 Microsoft (R) 程序维护实用工具 14.16.27051.0 版
 版权所有 (C) Microsoft Corporation。  保留所有权利。
@@ -562,56 +562,31 @@ F:\Projects\sqlcipher>copy /Y sqlite3.h tsrc
 已复制         1 个文件。
         copy /B sqlite3session.h +,,
 已复制         1 个文件。
-        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC -I"D:\Program Files\OpenSSL-Win64\include"  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fesrc-verify.exe -wd4054 -wd4055 -wd4100 -wd4127 -wd4130 -wd4152 -wd4189 -wd4206 -wd4210 -wd4232 -wd4244 -wd4305 -wd4306 -wd4702 -wd4706 .\tool\src-verify.c
+        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=1  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fesrc-verify.exe -wd4054 -wd4055 -wd4100 -wd4127 -wd4130 -wd4152 -wd4189 -wd4206 -wd4210 -wd4232 -wd4244 -wd4305 -wd4306 -wd4702 -wd4706 .\tool\src-verify.c
 src-verify.c
         tclsh .\tool\mksqlite3c.tcl --linemacros=0
-        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC -I"D:\Program Files\OpenSSL-Win64\include"  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fosqlite3.lo -Fdsqlite3.pdb  -c sqlite3.c
-sqlite3.c
-        echo #ifndef SQLITE_RESOURCE_VERSION > sqlite3rc.h
-        for /F %V in ('type ".\VERSION"') do (  echo #define SQLITE_RESOURCE_VERSION %V  | tclsh .\tool\replace.tcl exact . ^, >> sqlite3rc.h  )
 
-F:\Projects\sqlcipher>(echo #define SQLITE_RESOURCE_VERSION 3.44.2   | tclsh .\tool\replace.tcl exact . ,   1>>sqlite3rc.h )
-        echo #endif >> sqlite3rc.h
-        rc -DSQLITE_OS_WIN=1 -I. -I. -I.\src   -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=1  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -r -fo sqlite3res.lo .\src\sqlite3.rc
-Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
+F:\Projects\sqlcipher>cl -I"D:\Program Files\OpenSSL-Win64\include" sqlite3.c -DSQLITE_API=__declspec(dllexport) -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC /MT -link -dll -out:sqlcipher.dll -LIBPATH:"D:\Program Files\OpenSSL-Win64\lib" libeay32.lib ssleay32.lib
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.16.27051 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+sqlite3.c
+Microsoft (R) Incremental Linker Version 14.16.27051.0
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
-        lib.exe /NOLOGO /MACHINE:x64 /OUT:libsqlite3.lib sqlite3.lo
-        echo EXPORTS > sqlite3.def
-        dumpbin /all libsqlite3.lib  | tclsh .\tool\replace.tcl include "^\s+1 _?(sqlite3(?:session|changeset|changegroup|rebaser|rbu)?_[^@]*)(?:@\d+)?$" \1  | sort >> sqlite3.def
-        link.exe /DEBUG   /NOLOGO /MACHINE:x64  /LIBPATH:"D:\Program Files\OpenSSL-Win64\lib\VC\static" /DLL /DEF:sqlite3.def /OUT:sqlite3.dll sqlite3.lo sqlite3res.lo  libcrypto64MT.lib libssl64MT.lib ws2_32.lib shell32.lib advapi32.lib gdi32.lib user32.lib crypt32.lib
-  正在创建库 sqlite3.lib 和对象 sqlite3.exp
-        cl -nologo -W4 -DINCLUDE_MSVC_H=1   -DSQLITE_OS_WIN=1 -I. -I. -I.\src -fp:precise -MT -DNDEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NONSTDC_NO_WARNINGS -DSQLITE_THREADSAFE=1 -DSQLITE_THREAD_OVERRIDE_LOCK=-1 -DSQLITE_TEMP_STORE=2 -DSQLITE_HAS_CODEC -I"D:\Program Files\OpenSSL-Win64\include"  -DSQLITE_MAX_TRIGGER_DEPTH=100  -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_FTS5=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_GEOPOLY=1 -DSQLITE_ENABLE_STMTVTAB=1 -DSQLITE_ENABLE_DBPAGE_VTAB=1 -DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_BYTECODE_VTAB=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_MATH_FUNCTIONS   -O2 -Zi -Fesqlite3.exe  -DSQLITE_DQS=0 -DSQLITE_ENABLE_FTS4=1 -DSQLITE_ENABLE_EXPLAIN_COMMENTS=1 -DSQLITE_ENABLE_OFFSET_SQL_FUNC=1 -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION=1 -DSQLITE_ENABLE_STMT_SCANSTATUS=1 -DHAVE_READLINE=0 shell.c sqlite3.c  /link /pdb:sqlite3sh.pdb /DEBUG   /NOLOGO /MACHINE:x64   /LIBPATH:"D:\Program Files\OpenSSL-Win64\lib\VC\static" sqlite3res.lo   libcrypto64MT.lib libssl64MT.lib ws2_32.lib shell32.lib advapi32.lib gdi32.lib user32.lib crypt32.lib
-shell.c
-shell.c: warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-shell.c(610): warning C4204: 使用了非标准扩展: 非常量聚合初始值设定项
-shell.c(732): warning C4204: 使用了非标准扩展: 非常量聚合初始值设定项
-shell.c(26296): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-shell.c(26328): error C2001: 常量中有换行符
-shell.c(26329): error C2143: 语法错误: 缺少“;”(在“const”的前面)
-shell.c(26343): error C2065: “zBom”: 未声明的标识符
-shell.c(26343): warning C4047: “=”:“int”与“const char *”的间接级别不同
-shell.c(26410): error C2065: “zBom”: 未声明的标识符
-shell.c(26410): warning C4047: “函数”:“const char *”与“int”的间接级别不同
-shell.c(26410): warning C4024: “oPutsUtf8”: 形参和实参 1 的类型不同
-shell.c(26423): error C2065: “zBom”: 未声明的标识符
-shell.c(26423): warning C4047: “函数”:“const char *”与“int”的间接级别不同
-shell.c(26423): warning C4024: “oPutsUtf8”: 形参和实参 1 的类型不同
-sqlite3.c
-正在生成代码...
-NMAKE : fatal error U1077: “"D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64\cl.EXE"”: 返回代码“0x2”
-Stop.
+/out:sqlite3.exe
+-dll
+-out:sqlcipher.dll
+"-LIBPATH:D:\Program Files\OpenSSL-Win64\lib"
+libeay32.lib
+ssleay32.lib
+sqlite3.obj
+  正在创建库 sqlcipher.lib 和对象 sqlcipher.exp
 
 F:\Projects\sqlcipher>cd F:\Projects\pysqlcipher3
 
 F:\Projects\pysqlcipher3>python setup.py clean
 running clean
-
-F:\Projects\pysqlcipher3>python enter code here
-python: can't open file 'enter': [Errno 2] No such file or directory
-
-F:\Projects\pysqlcipher3>
-F:\Projects\pysqlcipher3>setup.py build_amalgamation
 
 F:\Projects\pysqlcipher3>python setup.py build_amalgamation
 running build_amalgamation
@@ -638,7 +613,8 @@ D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.1
 microprotocols.c
 D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\prepare_protocol.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\prepare_protocol.obj
 prepare_protocol.c
-D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\statement.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\statement.objstatement.c
+D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -DMODULE_NAME=\"pysqlcipher3.dbapi2\" -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_HAS_CODEC=1 -DSQLITE_TEMP_STORE=2 -Dinline=__inline -Iamalgamation "-ID:\Program Files\OpenSSL-Win64\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files\Python38\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\VS\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\um" "-ID:\Windows Kits\10\\include\10.0.22621.0\\shared" "-ID:\Windows Kits\10\\include\10.0.22621.0\\winrt" "-ID:\Windows Kits\10\\include\10.0.22621.0\\cppwinrt" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" "-ID:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" "-ID:\Windows Kits\10\include\10.0.22621.0\ucrt" "-ID:\Windows Kits\10\include\10.0.22621.0\shared" "-ID:\Windows Kits\10\include\10.0.22621.0\um" "-ID:\Windows Kits\10\include\10.0.22621.0\winrt" "-ID:\Windows Kits\10\include\10.0.22621.0\cppwinrt" /Tcsrc\python3\statement.c /Fobuild\temp.win-amd64-3.8\Release\src\python3\statement.obj
+statement.c
 src\python3\statement.c(138): warning C4090: “=”: 不同的“const”限定符
 src\python3\statement.c(158): warning C4244: “函数”: 从“Py_ssize_t”转换到“int”，可能丢失数据
 src\python3\statement.c(149): warning C4996: 'PyObject_AsCharBuffer': deprecated in 3.0
@@ -743,9 +719,10 @@ creating dist
 creating 'dist\pysqlcipher3-1.2.1-py3.8-win-amd64.egg' and adding 'build\bdist.win-amd64\egg' to it
 removing 'build\bdist.win-amd64\egg' (and everything under it)
 Processing pysqlcipher3-1.2.1-py3.8-win-amd64.egg
+removing 'd:\program files\python38\lib\site-packages\pysqlcipher3-1.2.1-py3.8-win-amd64.egg' (and everything under it)
 creating d:\program files\python38\lib\site-packages\pysqlcipher3-1.2.1-py3.8-win-amd64.egg
 Extracting pysqlcipher3-1.2.1-py3.8-win-amd64.egg to d:\program files\python38\lib\site-packages
-Adding pysqlcipher3 1.2.1 to easy-install.pth file
+pysqlcipher3 1.2.1 is already the active version in easy-install.pth
 
 Installed d:\program files\python38\lib\site-packages\pysqlcipher3-1.2.1-py3.8-win-amd64.egg
 Processing dependencies for pysqlcipher3==1.2.1
